@@ -26,14 +26,19 @@ use App\Models\SchoolYearModel;
 */
 
 
+// Default home
 Route::get('/', function () {
-    return view('welcome');
-})->name('home')->middleware('redirect.nonlogin');
+    return view('auth.login');
+})->name('login');
+
+Route::post('/login', function () {
+    // dito muna fake login
+    return redirect('/admin/dashboard');
+})->name('login.submit');
 
 
-Route::get('/home', function () {
-    return view('welcome');
-})->middleware('redirect.nonlogin');
+
+
 
 
 Route::middleware(['redirect.nonlogin', 'guest'])->group(function () {
